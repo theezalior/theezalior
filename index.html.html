@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Zalior | Premium Streetwear</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #111111;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- ANNOUNCEMENT BAR --- */
+        .announcement-bar {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #222;
+        }
+
+        /* --- HEADER / NAVBAR --- */
+        header {
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            z-index: 1000;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #777;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .nav-icons i:hover {
+            color: #777;
+        }
+
+        /* --- DYNAMIC DROPDOWN SEARCH BAR --- */
+        .search-dropdown {
+            display: none;
+            background: #fafafa;
+            border-bottom: 1px solid #eeeeee;
+            padding: 15px 40px;
+        }
+
+        .search-container-inner {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #111;
+            padding-bottom: 5px;
+        }
+
+        .search-container-inner input {
+            width: 100%;
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            outline: none;
+            padding: 5px;
+        }
+
+        .search-container-inner i {
+            font-size: 16px;
+            color: #111;
+            cursor: pointer;
+        }
+
+        .cart-icon-container {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: #111;
+            color: #fff;
+            font-size: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* --- USER ACCOUNT MODAL --- */
+        .user-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 40px;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 4px;
+            position: relative;
+            text-align: center;
+        }
+
+        .modal-content h2 {
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            outline: none;
+            font-size: 13px;
+        }
+
+        .modal-content .btn-login {
+            width: 100%;
+            background: #111;
+            color: white;
+            padding: 12px;
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .modal-content .btn-login:hover {
+            background: #444;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* --- HERO BANNER --- */
+        .hero {
+            position: relative;
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1516257984-b1b4d707412e?q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding-left: 8%;
+        }
+
+        .hero-content {
+            color: white;
+            max-width: 600px;
+        }
+
+        .hero-content h5 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            font-weight: 500;
+            line-height: 1.6;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-shop {
+            display: inline-block;
+            background: white;
+            color: black;
+            padding: 14px 28px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-shop:hover {
+            background: #111;
+            color: white;
+        }
+
+        /* --- AI SLIDER --- */
+        .ai-slider-container {
+            background: #fdfdfd;
+            border-bottom: 1px solid #eaeaea;
+            overflow: hidden;
+            position: relative;
+            padding: 30px 0;
+        }
+
+        .ai-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .ai-slide-item {
+            min-width: 100%;
+            text-align: center;
+            padding: 0 40px;
+        }
+
+        .ai-slide-item i {
+            font-size: 24px;
+            color: #111;
+            margin-bottom: 10px;
+        }
+
+        .ai-slide-item h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .ai-slide-item p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* --- FEATURES BAR --- */
+        .features-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 1300px;
+            margin: 40px auto;
+            padding: 0 40px;
+            gap: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-item i {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .feature-text h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .feature-text p {
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* --- SECTION TITLE --- */
+        .section-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin: 60px 0 30px 0;
+        }
+
+        /* --- SHOP BY CATEGORY --- */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .category-card {
+            position: relative;
+            height: 380px;
+            overflow: hidden;
+        }
+
+        .category-card img {
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .category-overlay h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .btn-cat {
+            background: white;
+            color: black;
+            padding: 8px 16px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-cat:hover {
+            background: #111;
+            color: white;
+        }
+
+        /* --- PRODUCTS GRID --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-image {
+            height: 280px;
+            background-color: #f7f7f7;
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .product-details {
+            text-align: left;
+        }
+
+        .product-name {
+            font-size: 12px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .product-price {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .btn-add-cart {
+            width: 100%;
+            background: #111;
+            color: white;
+            border: none;
+            padding: 10px 0;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-add-cart:hover {
+            background: #444;
+        }
+
+        /* --- PROMO BANNERS --- */
+        .promo-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1300px;
+            margin: 60px auto;
+            padding: 0 40px;
+        }
+
+        .promo-banner {
+            position: relative;
+            height: 260px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 40px;
+        }
+
+        .promo-1 { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=600'); background-size: cover; }
+        .promo-2 { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=600'); background-size: cover; }
+        .promo-3 { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=600'); background-size: cover; }
+
+        .promo-banner h2 {
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .promo-banner p {
+            font-size: 13px;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .btn-explore {
+            align-self: flex-start;
+            background: white;
+            color: black;
+            padding: 10px 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-explore:hover {
+            background: #111;
+            color: white;
+        }
+
+        /* --- INSTAGRAM FEED --- */
+        .instagram-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .instagram-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .instagram-handle {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 5px;
+            padding: 0 10px;
+        }
+
+        .instagram-item {
+            height: 160px;
+            background-color: #eee;
+        }
+
+        /* --- CHATBOT WIDGET --- */
+        .ai-chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 5000;
+        }
+
+        .ai-chat-bubble {
+            background: #111;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+
+        .ai-chat-bubble:hover {
+            transform: scale(1.05);
+        }
+
+        .ai-chat-window {
+            display: none;
+            position: absolute;
+            bottom: 75px;
+            right: 0;
+            width: 320px;
+            height: 420px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            border: 1px solid #eaeaea;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .ai-chat-header {
+            background: #111;
+            color: white;
+            padding: 15px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: #fafafa;
+        }
+
+        .chat-msg {
+            padding: 8px 12px;
+            border-radius: 8px;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+
+        .chat-msg.bot {
+            background: #eee;
+            color: #111;
+            align-self: flex-start;
+        }
+
+        .chat-msg.user {
+            background: #111;
+            color: #fff;
+            align-self: flex-end;
+        }
+
+        .ai-chat-footer {
+            display: flex;
+            border-top: 1px solid #eaeaea;
+            padding: 10px;
+            background: #fff;
+        }
+
+        .ai-chat-footer input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 12px;
+            padding: 5px;
+        }
+
+        .ai-chat-footer button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #111;
+            font-size: 14px;
+            padding: 0 5px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #fafafa;
+            padding: 60px 40px 20px 40px;
+            border-top: 1px solid #eaeaea;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+            max-width: 1300px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .footer-brand h2 {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            max-width: 240px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .footer-socials a {
+            font-size: 18px;
+            color: #111111;
+            transition: color 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            color: #777777;
+        }
+
+        .footer-column h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            font-size: 12px;
+            color: #555;
+            transition: 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #111;
+        }
+
+        .newsletter h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .newsletter-form {
+            display: flex;
+            border-bottom: 1px solid #111;
+            padding-bottom: 5px;
+        }
+
+        .newsletter-form input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            padding: 5px;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 11px;
+            color: #999;
+            margin-top: 60px;
+            border-top: 1px solid #eaeaea;
+            padding-top: 20px;
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 1024px) {
+            .product-grid { grid-template-columns: repeat(3, 1fr); }
+            .category-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-container { grid-template-columns: repeat(2, 1fr); }
+            .instagram-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 15px; }
+            .features-bar { grid-template-columns: repeat(2, 1fr); }
+            .promo-section { grid-template-columns: 1fr; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .category-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announcement-bar">
+        Free shipping on all orders above Rs. 1,499
+    </div>
+
+    <!-- HEADER / NAVBAR -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">The Zalior</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Collections</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <!-- Handlers added to the structural image icons below -->
+            <div class="nav-icons">
+                <i class="fa-solid fa-magnifying-glass" onclick="toggleSearchDropdown()" title="Search Products"></i>
+                <i class="fa-regular fa-user" onclick="toggleUserModal()" title="My Account"></i>
+                <div class="cart-icon-container" onclick="viewCart()" title="View Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Search bar input panel element layout link drop down -->
+        <div class="search-dropdown" id="searchDropdown">
+            <div class="search-container-inner">
+                <input type="text" id="searchInputField" placeholder="Search for apparel, collections, drops..." onkeypress="handleSearchSubmit(event)">
+                <i class="fa-solid fa-magnifying-glass" onclick="executeSearchAction()"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- ACCOUNT/LOGIN POPUP BOX MODAL -->
+    <div class="user-modal" id="userModal" onclick="checkCloseModal(event)">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleUserModal()">&times;</span>
+            <h2>Sign In</h2>
+            <input type="email" placeholder="Email Address" required>
+            <input type="password" placeholder="Password" required>
+            <button class="btn-login" onclick="alert('Account feature system simulation synced!')">Sign In</button>
+        </div>
+    </div>
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+        <div class="hero-content">
+            <h5>New Drops</h5>
+            <h1>Premium.<br>Streetwear.</h1>
+            <p>Wear the hype. Skip the price.</p>
+            <a href="#" class="btn-shop">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- AI SLIDER COMPONENT -->
+    <div class="ai-slider-container">
+        <div class="ai-slider" id="aiSlider">
+            <div class="ai-slide-item">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h3>AI Personalized Curation</h3>
+                <p>Our algorithms find the absolute best streetwear tailored to your unique profile alignment.</p>
+            </div>
+            <div class="ai-slide-item">
+                <i class="fa-solid fa-shirt"></i>
+                <h3>Smart Virtual Fitting Room</h3>
+                <p>Chat with our live web assistant below to determine precise item measurements before checkout.</p>
+            </div>
+            <div class="ai-slide-item">
+                <i class="fa-solid fa-bolt"></i>
+                <h3>Predictive Trend Mapping</h3>
+                <p>Sourcing cutting-edge streetwear drops up to 3 months ahead of mainstream market waves.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURES BAR -->
+    <section class="features-bar">
+        <div class="feature-item">
+            <i class="fa-truck-fast fa-solid"></i>
+            <div class="feature-text">
+                <h4>Free Shipping</h4>
+                <p>On all orders above Rs. 1,499</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-award"></i>
+            <div class="feature-text">
+                <h4>Premium Quality</h4>
+                <p>Strict structural style-control guaranteed</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-arrow-rotate-left"></i>
+            <div class="feature-text">
+                <h4>Easy Returns</h4>
+                <p>Hassle free returns</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-headset"></i>
+            <div class="feature-text">
+                <h4>24/7 Support</h4>
+                <p>We're here to help</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOP BY CATEGORY -->
+    <h2 class="section-title">Shop By Category</h2>
+    <section class="category-grid">
+        <div class="category-card">
+            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=400" alt="Hoodies">
+            <div class="category-overlay">
+                <h3>Hoodies</h3>
+                <a href="#" class="btn-cat">Shop Now</a>
+            </div>
+        </div>
+        <div class="category-card">
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400" alt="T-Shirts">
+            <div class="category-overlay">
+                <h3>T-Shirts</h3>
+                <a href="#" class="btn-cat">Shop Now</a>
+            </div>
+        </div>
+        <div class="category-card">
+            <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=400" alt="Pants">
+            <div class="category-overlay">
+                <h3>Pants</h3>
+                <a href="#" class="btn-cat">Shop Now</a>
+            </div>
+        </div>
+        <div class="category-card">
+            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=400" alt="Jackets">
+            <div class="category-overlay">
+                <h3>Jackets</h3>
+                <a href="#" class="btn-cat">Shop Now</a>
+            </div>
+        </div>
+        <div class="category-card">
+            <img src="https://images.unsplash.com/photo-1534215754734-18e55d13ce35?q=80&w=400" alt="Accessories">
+            <div class="category-overlay">
+                <h3>Accessories</h3>
+                <a href="#" class="btn-cat">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRENDING NOW -->
+    <h2 class="section-title">Trending Now</h2>
+    <section class="product-grid">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=300" alt="Product">
+            </div>
+            <div class="product-details">
+                <div class="product-name">Dark Dreams Hoodie</div>
+                <div class="product-price">Rs. 1,699</div>
+                <button class="btn-add-cart" onclick="addToCart('Dark Dreams Hoodie', 1699)">Add To Cart</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=300" alt="Product">
+            </div>
+            <div class="product-details">
+                <div class="product-name">Chaos Club Tee</div>
+                <div class="product-price">Rs. 899</div>
+                <button class="btn-add-cart" onclick="addToCart('Chaos Club Tee', 899)">Add To Cart</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=300" alt="Product">
+            </div>
+            <div class="product-details">
+                <div class="product-name">Classic Heavyweight Tee</div>
+                <div class="product-price">Rs. 949</div>
+                <button class="btn-add-cart" onclick="addToCart('Classic Heavyweight Tee', 949)">Add To Cart</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=300" alt="Product">
+            </div>
+            <div class="product-details">
+                <div class="product-name">Utility Cargo Pants</div>
+                <div class="product-price">Rs. 1,599</div>
+                <button class="btn-add-cart" onclick="addToCart('Utility Cargo Pants', 1599)">Add To Cart</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=300" alt="Product">
+            </div>
+            <div class="product-details">
+                <div class="product-name">The Zalior Oversized Tee</div>
+                <div class="product-price">Rs. 999</div>
+                <button class="btn-add-cart" onclick="addToCart('The Zalior Oversized Tee', 999)">Add To Cart</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1564557173030-75c0ffbf0691?q=80&w=300" alt="Product">
+            </div>
+            <div class="product-details">
+                <div class="product-name">Essential Hoodie</div>
+                <div class="product-price">Rs. 1,499</div>
+                <button class="btn-add-cart" onclick="addToCart('Essential Hoodie', 1499)">Add To Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMO BANNERS -->
+    <section class="promo-section">
+        <div class="promo-banner promo-1">
+            <h2>New Drops</h2>
+            <p>Every Week</p>
+            <a href="#" class="btn-explore">Explore</a>
+        </div>
+        <div class="promo-banner promo-2">
+            <h2>Premium Streetwear</h2>
+            <p>Engineered For The Culture</p>
+            <a href="#" class="btn-explore">Explore</a>
+        </div>
+        <div class="promo-banner promo-3">
+            <h2>Up To 50% Off</h2>
+            <p>Limited Time Only</p>
+            <a href="#" class="btn-explore">Shop Sale</a>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM FEED -->
+    <section class="instagram-section">
+        <span class="instagram-title">Follow Us On Instagram</span>
+        <a href="https://instagram.com/thezalior" target="_blank" class="instagram-handle">@thezalior</a>
+        <div class="instagram-grid">
+            <div class="instagram-item"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=200"></div>
+            <div class="instagram-item"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=200"></div>
+            <div class="instagram-item"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=200"></div>
+            <div class="instagram-item"><img src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?q=80&w=200"></div>
+            <div class="instagram-item"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=200"></div>
+            <div class="instagram-item"><img src="https://images.unsplash.com/photo-1554412933-514a83d2f3c8?q=80&w=200"></div>
+            <div class="instagram-item"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=200"></div>
+            <div class="instagram-item"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=200"></div>
+        </div>
+    </section>
+
+    <!-- LIVE AI ASSISTANT CHATBOT -->
+    <div class="ai-chat-widget">
+        <div class="ai-chat-bubble" onclick="toggleChat()">
+            <i class="fa-solid fa-robot"></i>
+        </div>
+        <div class="ai-chat-window" id="chatWindow">
+            <div class="ai-chat-header">
+                <span>Zalior AI Assistant</span>
+                <i class="fa-solid fa-xmark" style="cursor:pointer" onclick="toggleChat()"></i>
+            </div>
+            <div class="ai-chat-body" id="chatBody">
+                <div class="chat-msg bot">
+                    Hey! Welcome to The Zalior. Looking for clothing options, size selections, or want to instantly chat with our team over WhatsApp? Type your message below!
+                </div>
+            </div>
+            <div class="ai-chat-footer">
+                <input type="text" id="chatInput" placeholder="Ask AI Assistant..." onkeypress="handleChatKey(event)">
+                <button onclick="sendChatMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>The Zalior</h2>
+                <p>Streetwear culture, curated style. Engineered for the culture, made for the present.</p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/thezalior" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://wa.me/923002577434" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#">All Products</a></li>
+                    <li><a href="#">Hoodies</a></li>
+                    <li><a href="#">T-Shirts</a></li>
+                    <li><a href="#">Pants</a></li>
+                    <li><a href="#">Accessories</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping & Delivery</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Track Your Order</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column newsletter">
+                <h3>Newsletter</h3>
+                <p>Get exclusive updates on new drops and special offers.</p>
+                <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+                    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            &copy; 2026 The Zalior. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- INTERACTION LOGIC JAVASCRIPT -->
+    <script>
+        let cartCount = 0;
+        let cartItems = [];
+
+        // Toggle drop down header search input frame
+        function toggleSearchDropdown() {
+            const searchPanel = document.getElementById('searchDropdown');
+            searchPanel.style.display = (searchPanel.style.display === 'block') ? 'none' : 'block';
+            if (searchPanel.style.display === 'block') {
+                document.getElementById('searchInputField').focus();
+            }
+        }
+
+        function handleSearchSubmit(e) {
+            if (e.key === 'Enter') {
+                executeSearchAction();
+            }
+        }
+
+        function executeSearchAction() {
+            const query = document.getElementById('searchInputField').value.trim();
+            if (query) {
+                alert(`Searching catalog database for: "${query}"...`);
+                document.getElementById('searchInputField').value = '';
+                toggleSearchDropdown();
+            }
+        }
+
+        // Toggle login screen overlay modal panel
+        function toggleUserModal() {
+            const modal = document.getElementById('userModal');
+            modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function checkCloseModal(e) {
+            if (e.target.id === 'userModal') {
+                toggleUserModal();
+            }
+        }
+
+        function addToCart(productName, price) {
+            cartCount++;
+            document.getElementById('cart-count').innerText = cartCount;
+            cartItems.push({ name: productName, price: price });
+            alert(`${productName} added to cart!`);
+        }
+
+        function viewCart() {
+            if(cartItems.length === 0) {
+                alert("Your cart is empty!");
+            } else {
+                let itemsList = cartItems.map(item => `${item.name} - Rs. ${item.price}`).join('\n');
+                let confirmation = confirm(`Your Cart:\n\n${itemsList}\n\nClick OK to finalize checkout. A notification update log will target shahzad97384@gmail.com.`);
+                if (confirmation) {
+                    triggerEmailNotification("Order Checkout Request", `Items:\n${itemsList}`);
+                }
+            }
+        }
+
+        function triggerEmailNotification(subject, details) {
+            console.log(`Dispatched payload routing to shahzad97384@gmail.com. Subject: ${subject}`);
+            alert(`Notification securely sent to brand management at shahzad97384@gmail.com! Tracking details logged.`);
+        }
+
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            const emailValue = document.getElementById('newsletterEmail').value;
+            alert('Subscribed successfully!');
+            triggerEmailNotification("New Newsletter Subscription", `Subscriber Email: ${emailValue}`);
+        }
+
+        let currentSlide = 0;
+        const totalSlides = 3;
+        setInterval(() => {
+            const slider = document.getElementById('aiSlider');
+            if (slider) {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+        }, 4500);
+
+        function toggleChat() {
+            const win = document.getElementById('chatWindow');
+            win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function handleChatKey(e) {
+            if(e.key === 'Enter') sendChatMessage();
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const chatBody = document.getElementById('chatBody');
+            if(!input.value.trim()) return;
+
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-msg user';
+            userMsg.innerText = input.value;
+            chatBody.appendChild(userMsg);
+
+            const query = input.value.toLowerCase();
+            input.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chat-msg bot';
+
+                if(query.includes('whatsapp') || query.includes('contact') || query.includes('number') || query.includes('call')) {
+                    botMsg.innerHTML = `Connecting you directly to live Human support on WhatsApp! <a href="https://wa.me/923002577434?text=Hi%20Zalior%20Support,%20I%20need%20help%20with%20an%20item!" target="_blank" style="text-decoration:underline; font-weight:bold; color:#111;"><br><i class="fa-brands fa-whatsapp"></i> Click Here to Chat Now</a>`;
+                } else if(query.includes('size') || query.includes('fit')) {
+                    botMsg.innerText = "Our custom premium blanks use custom contemporary streetwear fits. Let us know which specific item interests you or check out via WhatsApp for personalized sizing guidance!";
+                } else if(query.includes('price') || query.includes('cost')) {
+                    botMsg.innerText = "All individual items are systematically detailed above in PKR (Rs.) on the product catalog layout frames.";
+                } else {
+                    botMsg.innerHTML = `Understood! If you want custom service assistance, you can also text us directly right here: <a href="https://wa.me/923002577434" target="_blank" style="text-decoration:underline; font-weight:bold;"><i class="fa-brands fa-whatsapp"></i> WhatsApp Team</a>. Updates are synced to brand admin framework profiles at shahzad97384@gmail.com.`;
+                }
+
+                chatBody.appendChild(botMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 800);
+        }
+    </script>
+</body>
+</html>
