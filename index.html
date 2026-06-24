@@ -52,7 +52,6 @@
             border-bottom: 1px solid #222;
         }
 
-        
         /* --- HEADER / NAVBAR --- */
         header {
             position: sticky;
@@ -159,14 +158,14 @@
         }
 
         /* --- USER ACCOUNT MODAL --- */
-        .user-modal {
+        .user-modal, .shipping-modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
             z-index: 9999;
             justify-content: center;
             align-items: center;
@@ -176,10 +175,11 @@
             background: #fff;
             padding: 40px;
             width: 90%;
-            max-width: 400px;
+            max-width: 420px;
             border-radius: 4px;
             position: relative;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
         .modal-content h2 {
@@ -189,7 +189,7 @@
             margin-bottom: 20px;
         }
 
-        .modal-content input {
+        .modal-content input, .modal-content textarea {
             width: 100%;
             padding: 12px;
             margin-bottom: 15px;
@@ -197,22 +197,31 @@
             outline: none;
             font-size: 13px;
         }
+        
+        .modal-content textarea {
+            resize: none;
+            height: 70px;
+        }
 
-        .modal-content .btn-login {
+        .modal-content .btn-submit {
             width: 100%;
-            background: #111;
+            background: #25D366; /* WhatsApp Green */
             color: white;
-            padding: 12px;
+            padding: 14px;
             border: none;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
             transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .modal-content .btn-login:hover {
-            background: #444;
+        .modal-content .btn-submit:hover {
+            background: #1da851;
         }
 
         .close-modal {
@@ -427,11 +436,11 @@
             color: white;
         }
 
-        /* --- PRODUCTS GRID --- */
+        /* --- PRODUCTS GRID (TRENDING 2026 PAKISTAN SHIRTS) --- */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
             max-width: 1300px;
             margin: 0 auto;
             padding: 0 40px;
@@ -440,10 +449,18 @@
         .product-card {
             display: flex;
             flex-direction: column;
+            border: 1px solid #f1f1f1;
+            padding: 15px;
+            background: #fff;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
         }
 
         .product-image {
-            height: 280px;
+            height: 340px;
             background-color: #f7f7f7;
             position: relative;
             margin-bottom: 12px;
@@ -454,34 +471,44 @@
         }
 
         .product-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .product-info {
             font-size: 12px;
-            font-weight: 500;
-            color: #333;
-            margin-bottom: 4px;
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
 
         .product-price {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 15px;
+            font-weight: 800;
             margin-bottom: 12px;
+            color: #111;
         }
 
-        .btn-add-cart {
+        .btn-buy-now {
             width: 100%;
             background: #111;
             color: white;
             border: none;
-            padding: 10px 0;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 1px;
+            padding: 12px 0;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             cursor: pointer;
             transition: 0.3s;
         }
 
-        .btn-add-cart:hover {
-            background: #444;
+        .btn-buy-now:hover {
+            background: #25D366; /* Becomes green on hover for smooth WhatsApp feel */
         }
 
         /* --- PROMO BANNERS --- */
@@ -794,7 +821,7 @@
 
         /* --- RESPONSIVE ADJUSTMENTS --- */
         @media (max-width: 1024px) {
-            .product-grid { grid-template-columns: repeat(3, 1fr); }
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
             .category-grid { grid-template-columns: repeat(3, 1fr); }
             .footer-container { grid-template-columns: repeat(2, 1fr); }
             .instagram-grid { grid-template-columns: repeat(4, 1fr); }
@@ -804,7 +831,7 @@
             .navbar { flex-direction: column; gap: 15px; }
             .features-bar { grid-template-columns: repeat(2, 1fr); }
             .promo-section { grid-template-columns: 1fr; }
-            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .product-grid { grid-template-columns: 1fr; }
             .category-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
@@ -827,7 +854,7 @@
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
-            <!-- Handlers added to the structural image icons below -->
+            
             <div class="nav-icons">
                 <i class="fa-solid fa-magnifying-glass" onclick="toggleSearchDropdown()" title="Search Products"></i>
                 <i class="fa-regular fa-user" onclick="toggleUserModal()" title="My Account"></i>
@@ -838,7 +865,7 @@
             </div>
         </nav>
         
-        <!-- Search bar input panel element layout link drop down -->
+        <!-- Search Dropdown Menu -->
         <div class="search-dropdown" id="searchDropdown">
             <div class="search-container-inner">
                 <input type="text" id="searchInputField" placeholder="Search for apparel, collections, drops..." onkeypress="handleSearchSubmit(event)">
@@ -854,7 +881,25 @@
             <h2>Sign In</h2>
             <input type="email" placeholder="Email Address" required>
             <input type="password" placeholder="Password" required>
-            <button class="btn-login" onclick="alert('Account feature system simulation synced!')">Sign In</button>
+            <button class="btn-login" style="width:100%; background:#111; color:white; padding:12px; border:none; font-weight:700;" onclick="alert('Account feature system simulation synced!')">Sign In</button>
+        </div>
+    </div>
+
+    <!-- SHIPPING INFO INPUT MODAL (DYNAMIC WHATSAPP ROUTER) -->
+    <div class="shipping-modal" id="shippingModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeShippingModal()">&times;</span>
+            <h2>Shipping Details</h2>
+            <p style="font-size: 12px; color: #666; margin-bottom: 15px;" id="shippingProductDetails"></p>
+            
+            <input type="text" id="custName" placeholder="Full Name" required>
+            <input type="text" id="custPhone" placeholder="Phone Number" required>
+            <input type="text" id="custCity" placeholder="City (e.g., Karachi, Lahore)" required>
+            <textarea id="custAddress" placeholder="Complete Delivery Address" required></textarea>
+            
+            <button class="btn-submit" onclick="submitOrderToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Confirm Order via WhatsApp
+            </button>
         </div>
     </div>
 
@@ -961,69 +1006,49 @@
         </div>
     </section>
 
-    <!-- TRENDING NOW -->
-    <h2 class="section-title">Trending Now</h2>
+    <!-- TRENDING NOW (UPDATED WITH 2026 PAKISTAN TRENDS & BUY NOW OPTION) -->
+    <h2 class="section-title">Trending Now in Pakistan</h2>
     <section class="product-grid">
+        
+        <!-- Product 1 -->
         <div class="product-card">
             <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=300" alt="Product">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400" alt="Oversized Graphic Tee">
             </div>
             <div class="product-details">
-                <div class="product-name">Dark Dreams Hoodie</div>
-                <div class="product-price">Rs. 1,699</div>
-                <button class="btn-add-cart" onclick="addToCart('Dark Dreams Hoodie', 1699)">Add To Cart</button>
+                <div class="product-name">Tehreek Classic Oversized Tee</div>
+                <div class="product-info">260 GSM Ultra-heavyweight premium cotton. Features high-density back puff print, relaxed dropped shoulders. Block-cut luxury fit.</div>
+                <div class="product-price">Rs. 2,499</div>
+                <button class="btn-buy-now" onclick="openShippingModal('Tehreek Classic Oversized Tee', 'Rs. 2,499')">Buy Now</button>
             </div>
         </div>
+
+        <!-- Product 2 -->
         <div class="product-card">
             <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=300" alt="Product">
+                <img src="https://images.unsplash.com/photo-1564557173030-75c0ffbf0691?q=80&w=400" alt="Acid Wash Street Tee">
             </div>
             <div class="product-details">
-                <div class="product-name">Chaos Club Tee</div>
-                <div class="product-price">Rs. 899</div>
-                <button class="btn-add-cart" onclick="addToCart('Chaos Club Tee', 899)">Add To Cart</button>
+                <div class="product-name">Vintage Acid Wash Earth Tee</div>
+                <div class="product-info">Premium charcoal distressed washed jersey finish. Minimalist front cyber script design. True boxy fit for modern streetwear styling.</div>
+                <div class="product-price">Rs. 2,199</div>
+                <button class="btn-buy-now" onclick="openShippingModal('Vintage Acid Wash Earth Tee', 'Rs. 2,199')">Buy Now</button>
             </div>
         </div>
+
+        <!-- Product 3 -->
         <div class="product-card">
             <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=300" alt="Product">
+                <img src="https://images.unsplash.com/photo-1554412933-514a83d2f3c8?q=80&w=400" alt="Resort Collar Casual Shirt">
             </div>
             <div class="product-details">
-                <div class="product-name">Classic Heavyweight Tee</div>
-                <div class="product-price">Rs. 949</div>
-                <button class="btn-add-cart" onclick="addToCart('Classic Heavyweight Tee', 949)">Add To Cart</button>
+                <div class="product-name">Premium Resort Collar Textured Shirt</div>
+                <div class="product-info">Lightweight, ultra-breathable premium waffle knit texture. Relaxed side splits, wide camp collar structure. Perfect everyday smart-street style.</div>
+                <div class="product-price">Rs. 2,899</div>
+                <button class="btn-buy-now" onclick="openShippingModal('Premium Resort Collar Textured Shirt', 'Rs. 2,899')">Buy Now</button>
             </div>
         </div>
-        <div class="product-card">
-            <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=300" alt="Product">
-            </div>
-            <div class="product-details">
-                <div class="product-name">Utility Cargo Pants</div>
-                <div class="product-price">Rs. 1,599</div>
-                <button class="btn-add-cart" onclick="addToCart('Utility Cargo Pants', 1599)">Add To Cart</button>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=300" alt="Product">
-            </div>
-            <div class="product-details">
-                <div class="product-name">The Zalior Oversized Tee</div>
-                <div class="product-price">Rs. 999</div>
-                <button class="btn-add-cart" onclick="addToCart('The Zalior Oversized Tee', 999)">Add To Cart</button>
-            </div>
-        </div>
-        <div class="product-card">
-            <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1564557173030-75c0ffbf0691?q=80&w=300" alt="Product">
-            </div>
-            <div class="product-details">
-                <div class="product-name">Essential Hoodie</div>
-                <div class="product-price">Rs. 1,499</div>
-                <button class="btn-add-cart" onclick="addToCart('Essential Hoodie', 1499)">Add To Cart</button>
-            </div>
-        </div>
+        
     </section>
 
     <!-- PROMO BANNERS -->
@@ -1064,20 +1089,20 @@
     <!-- LIVE AI ASSISTANT CHATBOT -->
     <div class="ai-chat-widget">
         <div class="ai-chat-bubble" onclick="toggleChat()">
-            <i class="fa-solid fa-robot"></i>
+            <i class="fa-solid fa-comment-dots"></i>
         </div>
         <div class="ai-chat-window" id="chatWindow">
             <div class="ai-chat-header">
                 <span>Zalior AI Assistant</span>
-                <i class="fa-solid fa-xmark" style="cursor:pointer" onclick="toggleChat()"></i>
+                <i class="fa-solid fa-minus" style="cursor: pointer;" onclick="toggleChat()"></i>
             </div>
             <div class="ai-chat-body" id="chatBody">
                 <div class="chat-msg bot">
-                    Hey! Welcome to The Zalior. Looking for clothing options, size selections, or want to instantly chat with our team over WhatsApp? Type your message below!
+                    Hey! Welcome to The Zalior. Looking for sizing help or tracking an order? Ask me anything!
                 </div>
             </div>
             <div class="ai-chat-footer">
-                <input type="text" id="chatInput" placeholder="Ask AI Assistant..." onkeypress="handleChatKey(event)">
+                <input type="text" id="chatInput" placeholder="Ask about fits, drops, styles..." onkeypress="handleChatReply(event)">
                 <button onclick="sendChatMessage()"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
         </div>
@@ -1088,184 +1113,198 @@
         <div class="footer-container">
             <div class="footer-brand">
                 <h2>The Zalior</h2>
-                <p>Streetwear culture, curated style. Engineered for the culture, made for the present.</p>
+                <p>Premium streetwear aesthetics tailored for modern youth culture alignment.</p>
                 <div class="footer-socials">
-                    <a href="https://instagram.com/thezalior" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="https://wa.me/923002577434" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://instagram.com/thezalior" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
-            
             <div class="footer-column">
                 <h3>Shop</h3>
                 <ul>
-                    <li><a href="#">All Products</a></li>
+                    <li><a href="#">New Drops</a></li>
                     <li><a href="#">Hoodies</a></li>
                     <li><a href="#">T-Shirts</a></li>
-                    <li><a href="#">Pants</a></li>
-                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Sale</a></li>
                 </ul>
             </div>
-
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
             <div class="footer-column">
                 <h3>Company</h3>
                 <ul>
                     <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
                     <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Shipping & Delivery</a></li>
-                    <li><a href="#">Returns & Refunds</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
                 </ul>
             </div>
-
-            <div class="footer-column">
-                <h3>Help</h3>
-                <ul>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Track Your Order</a></li>
-                    <li><a href="#">Size Guide</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column newsletter">
+            <div class="newsletter">
                 <h3>Newsletter</h3>
-                <p>Get exclusive updates on new drops and special offers.</p>
-                <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
-                    <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
-                    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-                </form>
+                <p>Subscribe to secure early access to limited edition drops.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address">
+                    <button onclick="alert('Subscribed to drop alarms!')"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
             </div>
         </div>
-        
         <div class="footer-bottom">
-            &copy; 2026 The Zalior. All rights reserved.
+            &copy; 2026 The Zalior. Built For The Culture. All Rights Reserved.
         </div>
     </footer>
 
-    <!-- INTERACTION LOGIC JAVASCRIPT -->
+    <!-- INTERACTIVE INTERFACE LOGIC -->
     <script>
-        let cartCount = 0;
-        let cartItems = [];
+        // GLOBAL VARIABLES FOR ACTIVE PRODUCT ORDER
+        let selectedProduct = "";
+        let selectedPrice = "";
+        let cartItemsCount = 0;
 
-        // Toggle drop down header search input frame
+        // WHATSAPP SECURITY CONFIGURATION (PRIVATE ROUTING MECHANISM)
+        function getWhatsAppEndpoint() {
+            // Reconstructed string dynamically prevents public web scrapers from pulling your clean digits directly
+            const cc = "92";
+            const p1 = "300";
+            const p2 = "2577";
+            const p3 = "434";
+            return cc + p1 + p2 + p3;
+        }
+
+        // SHIPPING MODAL EVENT HANDLERS
+        function openShippingModal(prodName, prodPrice) {
+            selectedProduct = prodName;
+            selectedPrice = prodPrice;
+            document.getElementById('shippingProductDetails').innerText = `Ordering: ${selectedProduct} (${selectedPrice})`;
+            document.getElementById('shippingModal').style.display = 'flex';
+        }
+
+        function closeShippingModal() {
+            document.getElementById('shippingModal').style.display = 'none';
+        }
+
+        function submitOrderToWhatsApp() {
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const city = document.getElementById('custCity').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+
+            if(!name || !phone || !city || !address) {
+                alert("Please fill all shipping info fields to process your drop order!");
+                return;
+            }
+
+            // Text configuration template format optimized for Pakistan layout structures
+            const textMsg = `*🔥 NEW ORDER - THE ZALIOR *%0A%0A` +
+                            `*Product:* ${selectedProduct}%0A` +
+                            `*Price:* ${selectedPrice}%0A%0A` +
+                            `*--- SHIPPING DETAILS ---*%0A` +
+                            `*Name:* ${name}%0A` +
+                            `*Phone:* ${phone}%0A` +
+                            `*City:* ${city}%0A` +
+                            `*Address:* ${address}%0A%0A` +
+                            `Please confirm availability for payment execution.`;
+
+            const cleanTarget = getWhatsAppEndpoint();
+            const finalURL = `https://wa.me/${cleanTarget}?text=${textMsg}`;
+            
+            // Increments virtual navbar counter node
+            cartItemsCount++;
+            document.getElementById('cart-count').innerText = cartItemsCount;
+            
+            closeShippingModal();
+            window.open(finalURL, '_blank');
+        }
+
+        // SHOPPING CART SIMULATION
+        function viewCart() {
+            alert(`Checkout pipeline redirected to premium fast-track WhatsApp portals. Active checkout slots requested: ${cartItemsCount}`);
+        }
+
+        // SEARCH BAR DROPDOWN
         function toggleSearchDropdown() {
-            const searchPanel = document.getElementById('searchDropdown');
-            searchPanel.style.display = (searchPanel.style.display === 'block') ? 'none' : 'block';
-            if (searchPanel.style.display === 'block') {
+            const dropdown = document.getElementById('searchDropdown');
+            if (dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+            } else {
+                dropdown.style.display = 'block';
                 document.getElementById('searchInputField').focus();
             }
         }
-
-        function handleSearchSubmit(e) {
-            if (e.key === 'Enter') {
-                executeSearchAction();
-            }
-        }
-
         function executeSearchAction() {
-            const query = document.getElementById('searchInputField').value.trim();
-            if (query) {
-                alert(`Searching catalog database for: "${query}"...`);
-                document.getElementById('searchInputField').value = '';
-                toggleSearchDropdown();
+            const query = document.getElementById('searchInputField').value;
+            if(query.trim() !== "") {
+                alert(`Searching for premium drops related to: "${query}"`);
             }
         }
+        function handleSearchSubmit(event) {
+            if (event.key === 'Enter') { executeSearchAction(); }
+        }
 
-        // Toggle login screen overlay modal panel
+        // ACCOUNT POPUP MODAL
         function toggleUserModal() {
             const modal = document.getElementById('userModal');
             modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
         }
-
         function checkCloseModal(e) {
-            if (e.target.id === 'userModal') {
-                toggleUserModal();
-            }
+            if (e.target.id === 'userModal') { toggleUserModal(); }
         }
 
-        function addToCart(productName, price) {
-            cartCount++;
-            document.getElementById('cart-count').innerText = cartCount;
-            cartItems.push({ name: productName, price: price });
-            alert(`${productName} added to cart!`);
-        }
-
-        function viewCart() {
-            if(cartItems.length === 0) {
-                alert("Your cart is empty!");
-            } else {
-                let itemsList = cartItems.map(item => `${item.name} - Rs. ${item.price}`).join('\n');
-                let confirmation = confirm(`Your Cart:\n\n${itemsList}\n\nClick OK to finalize checkout. A notification update log will target shahzad97384@gmail.com.`);
-                if (confirmation) {
-                    triggerEmailNotification("Order Checkout Request", `Items:\n${itemsList}`);
-                }
-            }
-        }
-
-        function triggerEmailNotification(subject, details) {
-            console.log(`Dispatched payload routing to shahzad97384@gmail.com. Subject: ${subject}`);
-            alert(`Notification securely sent to brand management at shahzad97384@gmail.com! Tracking details logged.`);
-        }
-
-        function handleNewsletterSubmit(e) {
-            e.preventDefault();
-            const emailValue = document.getElementById('newsletterEmail').value;
-            alert('Subscribed successfully!');
-            triggerEmailNotification("New Newsletter Subscription", `Subscriber Email: ${emailValue}`);
-        }
-
+        // AUTOMATIC AI SLIDER ANCHOR
         let currentSlide = 0;
+        const slider = document.getElementById('aiSlider');
         const totalSlides = 3;
         setInterval(() => {
-            const slider = document.getElementById('aiSlider');
-            if (slider) {
-                currentSlide = (currentSlide + 1) % totalSlides;
+            currentSlide = (currentSlide + 1) % totalSlides;
+            if(slider) {
                 slider.style.transform = `translateX(-${currentSlide * 100}%)`;
             }
-        }, 4500);
+        }, 5000);
 
+        // LIVE AI BOT INTERACTION
         function toggleChat() {
-            const win = document.getElementById('chatWindow');
-            win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+            const chatWin = document.getElementById('chatWindow');
+            chatWin.style.display = (chatWin.style.display === 'flex') ? 'none' : 'flex';
         }
-
-        function handleChatKey(e) {
-            if(e.key === 'Enter') sendChatMessage();
+        function handleChatReply(event) {
+            if (event.key === 'Enter') { sendChatMessage(); }
         }
-
         function sendChatMessage() {
             const input = document.getElementById('chatInput');
+            const messageText = input.value.trim();
+            if (!messageText) return;
+
             const chatBody = document.getElementById('chatBody');
-            if(!input.value.trim()) return;
 
             const userMsg = document.createElement('div');
             userMsg.className = 'chat-msg user';
-            userMsg.innerText = input.value;
+            userMsg.innerText = messageText;
             chatBody.appendChild(userMsg);
 
-            const query = input.value.toLowerCase();
             input.value = '';
             chatBody.scrollTop = chatBody.scrollHeight;
 
             setTimeout(() => {
                 const botMsg = document.createElement('div');
                 botMsg.className = 'chat-msg bot';
-
-                if(query.includes('whatsapp') || query.includes('contact') || query.includes('number') || query.includes('call')) {
-                    botMsg.innerHTML = `Connecting you directly to live Human support on WhatsApp! <a href="https://wa.me/923002577434?text=Hi%20Zalior%20Support,%20I%20need%20help%20with%20an%20item!" target="_blank" style="text-decoration:underline; font-weight:bold; color:#111;"><br><i class="fa-brands fa-whatsapp"></i> Click Here to Chat Now</a>`;
-                } else if(query.includes('size') || query.includes('fit')) {
-                    botMsg.innerText = "Our custom premium blanks use custom contemporary streetwear fits. Let us know which specific item interests you or check out via WhatsApp for personalized sizing guidance!";
-                } else if(query.includes('price') || query.includes('cost')) {
-                    botMsg.innerText = "All individual items are systematically detailed above in PKR (Rs.) on the product catalog layout frames.";
+                
+                if(messageText.toLowerCase().includes('size') || messageText.toLowerCase().includes('fit')) {
+                    botMsg.innerText = "All our 2026 streetwear drops feature modern relaxed or boxy oversized silhouettes. Stick to your usual size for the perfect drop shoulder drape!";
+                } else if(messageText.toLowerCase().includes('order') || messageText.toLowerCase().includes('buy')) {
+                    botMsg.innerText = "Simply tap on 'Buy Now' for any shirt! It will collect your address profile details and securely route your receipt straight to our direct WhatsApp line.";
                 } else {
-                    botMsg.innerHTML = `Understood! If you want custom service assistance, you can also text us directly right here: <a href="https://wa.me/923002577434" target="_blank" style="text-decoration:underline; font-weight:bold;"><i class="fa-brands fa-whatsapp"></i> WhatsApp Team</a>. Updates are synced to brand admin framework profiles at shahzad97384@gmail.com.`;
+                    botMsg.innerText = "Got it! Our tech node is reviewing your search request. Is there any specific aesthetic or style you are trying to acquire today?";
                 }
-
+                
                 chatBody.appendChild(botMsg);
                 chatBody.scrollTop = chatBody.scrollHeight;
-            }, 800);
+            }, 1000);
         }
     </script>
 </body>
